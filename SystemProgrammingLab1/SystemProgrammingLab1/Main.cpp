@@ -1,45 +1,28 @@
 #include <stdio.h>
-#include <locale.h>
-#include <Windows.h>
+#include <stdlib.h> // To call system("pause")
+#include <locale.h> 
+#include <limits.h>
+#include <float.h>
 int main(void)
 {
-	setlocale(LC_CTYPE, "rus"); // смена кодовой таблицы символов - включение русского языка
+	setlocale(LC_CTYPE, "rus"); // Turning on russian language
 	printf("Лабораторная работа № 1\nПо системному программированию\nВыполнил студент 535а группы Скрынник Егор\n\n");
-	printf("TYPE\t\tSIZE\t\tMIN\t\tMAX\n");
-	// Булевские
-	printf("BOOL\t\t%i\t\t%i\t\t%i\n", sizeof(BOOL), FALSE, TRUE); 
-	printf("BOOLEAN\t\t%i\t\t%i\t\t%i\n", sizeof(BOOLEAN), FALSE, TRUE);
-	// Целочисленные
-	printf("SHORT\t\t%i\t\t%i\t\t%i\n", sizeof(SHORT), -32768, 32767);
-	printf("INT\t\t%i\t\t%i\t%i\n", sizeof(INT), -2147483647, 2147483647); 
-	printf("LONG\t\t%i\t\t%i\t%i\n", sizeof(LONG), -2147483647, 2147483647); 
-	// Целочисленные беззнаковые
-	printf("BYTE\t\t%i\t\t%i\t\t%i\n", sizeof(BYTE), 0, 255);
-	printf("WORD\t\t%i\t\t%i\t\t%i\n", sizeof(WORD), 0, 65535);
-	printf("UINT\t\t%i\t\t%u\t\t%u\n", sizeof(UINT), 0, 4294967295);
-	printf("ULONG\t\t%i\t\t%u\t\t%u\n", sizeof(ULONG), 0, 4294967295); 
-	printf("DWORD\t\t%i\t\t%u\t\t%u\n", sizeof(DWORD), 0, 4294967295);
-	// Вещественные
-	printf("FLOAT\t\t%i\t\t%e\t%e\n", sizeof(FLOAT), 3.4E-38, 3.4E+38);
-	printf("DOUBLE\t\t%i\t\t%e\t%e\n", sizeof(DOUBLE), 1.7E-308, 1.7E+308);
-	// Символьные
-	printf("CHAR\t\t%i\t\t%i\t\t%i\n", sizeof(CHAR), -128, 127);
-	printf("WCHAR\t\t%i\t\t%i\t\t%i\n", sizeof(WCHAR), 0, 65535);
-	printf("TCHAR\t\t%i\t\t%i\t\t%i\n", sizeof(TCHAR), 0, 65535);
-	// Строковые
-	printf("LPSTR\t\t%i\t\t%u\t\t%u\n", sizeof(LPSTR), 0, 4294967295);
-	printf("LPCSTR\t\t%i\t\t%u\t\t%u\n", sizeof(LPCSTR), 0, 4294967295);
-	printf("LPWSTR\t\t%i\t\t%u\t\t%u\n", sizeof(LPWSTR), 0, 4294967295);
-	printf("LPCWSTR\t\t%i\t\t%u\t\t%u\n", sizeof(LPCWSTR), 0, 4294967295);
-	printf("LPTSTR\t\t%i\t\t%u\t\t%u\n", sizeof(LPTSTR), 0, 4294967295);
-	printf("LPCTSTR\t\t%i\t\t%u\t\t%u\n", sizeof(LPCTSTR), 0, 4294967295);
-	// Handles
-	printf("HANDLE\t\t%i\t\t%u\t\t%u\n", sizeof(HANDLE), 0, 4294967295);
-	printf("HLOCAL\t\t%i\t\t%u\t\t%u\n", sizeof(HLOCAL), 0, 4294967295);
-	printf("HGLOBAL\t\t%i\t\t%u\t\t%u\n", sizeof(HGLOBAL), 0, 4294967295);
-	printf("HMODULE\t\t%i\t\t%u\t\t%u\n", sizeof(HMODULE), 0, 4294967295);
-	printf("HMENU\t\t%i\t\t%u\t\t%u\n", sizeof(HMENU), 0, 4294967295);
-	printf("HINSTANCE\t%i\t\t%u\t\t%u\n", sizeof(HINSTANCE), 0, 4294967295);
+	printf("TYPE\t\t\tSIZE\t\tMIN\t\t\tMAX\n");
+	printf("char\t\t\t%i\t\t%i\t\t\t%i\n", sizeof(char),CHAR_MIN ,CHAR_MAX); 
+	printf("signed char\t\t%i\t\t%i\t\t\t%i\n", sizeof(signed char), SCHAR_MIN, SCHAR_MAX);
+	printf("unsigned char\t\t%i\t\t%i\t\t\t%i\n", sizeof(unsigned char), 0, UCHAR_MAX);
+	printf("short\t\t\t%i\t\t%i\t\t\t%i\n", sizeof(short), SHRT_MIN, SHRT_MAX);
+	printf("unsigned short\t\t%i\t\t%i\t\t\t%i\n", sizeof(unsigned short), 0, USHRT_MAX); 
+	printf("int\t\t\t\%i\t\t%i\t\t%i\n", sizeof(int), INT_MIN, INT_MAX);
+	printf("unsigned int\t\t%i\t\t%i\t\t\t%u\n", sizeof(unsigned int), 0, UINT_MAX); 
+	printf("long\t\t\t%i\t\t%li\t\t%li\n", sizeof(long), LONG_MIN, LONG_MAX);
+	printf("unsigned long\t\t%i\t\t%i\t\t\t%lu\n", sizeof(unsigned long), 0, ULONG_MAX);
+	printf("long long\t\t%i\t\t%lli\t%lli\n", sizeof(long long), LLONG_MIN, LLONG_MAX);
+	printf("unsigned long long\t%i\t\t%i\t\t\t%llu\n", sizeof(unsigned long long), 0, ULLONG_MAX);
+	// Real types
+	printf("float\t\t\t%i\t\t%e\t\t%e\n", sizeof(float), FLT_MIN, FLT_MAX);
+	printf("double\t\t\t%i\t\t%e\t\t%e\n", sizeof(double), DBL_MIN, DBL_MAX);
+	printf("long double\t\t%i\t\t%e\t\t%e\n", sizeof(double), LDBL_MIN, LDBL_MIN);
 	system("pause");
 	return 0;
 }
