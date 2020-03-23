@@ -184,4 +184,3 @@ void SaveRecords(Header headerInfo, vector <Record> records)
 	for (int i = 0; i < records.size(); i++) WriteFile(recordsFile, &records[i], sizeof(Record), NULL, NULL);
 	CloseHandle(recordsFile);
 }
-
