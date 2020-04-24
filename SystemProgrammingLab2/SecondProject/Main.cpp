@@ -6,7 +6,7 @@
 #define AmountOfBytesToRead 2048
 void FromUnicodeToAscii(char*);
 void FromAsciiToUnicode(char*);
-// Функция для создания файла результата, и открытия исходного текста.
+// Р¤СѓРЅРєС†РёСЏ РґР»СЏ СЃРѕР·РґР°РЅРёСЏ С„Р°Р№Р»Р° СЂРµР·СѓР»СЊС‚Р°С‚Р°, Рё РѕС‚РєСЂС‹С‚РёСЏ РёСЃС…РѕРґРЅРѕРіРѕ С‚РµРєСЃС‚Р°.
 bool CreateResultAndOpenSourceFiles(char*, HANDLE*, HANDLE*);
 
 int main(int argc, char* argv[]) {
@@ -19,11 +19,11 @@ int main(int argc, char* argv[]) {
 			FromAsciiToUnicode(argv[2]);
 		}
 		else {
-			printf("Неверные параметры!");
+			printf("РќРµРІРµСЂРЅС‹Рµ РїР°СЂР°РјРµС‚СЂС‹!");
 		}
 	}
 	else {
-		printf("Введите параметры, и попробуйте еще раз!\n");
+		printf("Р’РІРµРґРёС‚Рµ РїР°СЂР°РјРµС‚СЂС‹, Рё РїРѕРїСЂРѕР±СѓР№С‚Рµ РµС‰Рµ СЂР°Р·!\n");
 	}
 	system("pause");
 	return 0;
@@ -39,19 +39,19 @@ void FromUnicodeToAscii(char* path) {
 		while (ReadFile(readFile, buff, AmountOfBytesToRead, (LPDWORD)&dwBytes, NULL))
 		{
 			if (dwBytes == 0) break;
-			//сначала вы вызываете MultiByteToWideChar, чтобы получить размер конечной строки (юникод)
+			//СЃРЅР°С‡Р°Р»Р° РІС‹ РІС‹Р·С‹РІР°РµС‚Рµ MultiByteToWideChar, С‡С‚РѕР±С‹ РїРѕР»СѓС‡РёС‚СЊ СЂР°Р·РјРµСЂ РєРѕРЅРµС‡РЅРѕР№ СЃС‚СЂРѕРєРё (СЋРЅРёРєРѕРґ)
 			int uLength = MultiByteToWideChar(CP_UTF8, 0, (LPCCH)buff, dwBytes, NULL, 0);
-			//указатель на юникод строку, которую необходимо конвертировать
+			//СѓРєР°Р·Р°С‚РµР»СЊ РЅР° СЋРЅРёРєРѕРґ СЃС‚СЂРѕРєСѓ, РєРѕС‚РѕСЂСѓСЋ РЅРµРѕР±С…РѕРґРёРјРѕ РєРѕРЅРІРµСЂС‚РёСЂРѕРІР°С‚СЊ
 			wchar_t* uStr = new wchar_t[uLength];
 			MultiByteToWideChar(CP_UTF8, 0, (LPCCH)buff, dwBytes, uStr, uLength);
-			//Вызов WideCharToMultiByte для получения размера конечной строки (ANSI)
+			//Р’С‹Р·РѕРІ WideCharToMultiByte РґР»СЏ РїРѕР»СѓС‡РµРЅРёСЏ СЂР°Р·РјРµСЂР° РєРѕРЅРµС‡РЅРѕР№ СЃС‚СЂРѕРєРё (ANSI)
 			int aLength = WideCharToMultiByte(CP_ACP, 0, uStr, uLength, NULL, 0, NULL, NULL);
-			//Указатель на буфер, который получает преобразованную строку.
+			//РЈРєР°Р·Р°С‚РµР»СЊ РЅР° Р±СѓС„РµСЂ, РєРѕС‚РѕСЂС‹Р№ РїРѕР»СѓС‡Р°РµС‚ РїСЂРµРѕР±СЂР°Р·РѕРІР°РЅРЅСѓСЋ СЃС‚СЂРѕРєСѓ.
 			char* aStr = new char[aLength];
 			WideCharToMultiByte(CP_ACP, 0, uStr, uLength, aStr, aLength, NULL, NULL);
 
 			if (!WriteFile(writeFile, aStr, aLength * sizeof(char), &dwBytes, NULL)) {
-				printf("Ошибка записи!");
+				printf("РћС€РёР±РєР° Р·Р°РїРёСЃРё!");
 				break;
 			}
 		}
@@ -74,13 +74,13 @@ void FromAsciiToUnicode(char* path) {
 		while (ReadFile(readFile, buff, AmountOfBytesToRead, (LPDWORD)&dwBytes, NULL))
 		{
 			if (dwBytes == 0) break;
-			//Определение размера строки Unicode
+			//РћРїСЂРµРґРµР»РµРЅРёРµ СЂР°Р·РјРµСЂР° СЃС‚СЂРѕРєРё Unicode
 			int uLength = MultiByteToWideChar(CP_UTF8, 0, (LPCCH)buff, dwBytes, NULL, 0);
 			wchar_t* uStr = new wchar_t[uLength];
-			//Конечная перекодировка
+			//РљРѕРЅРµС‡РЅР°СЏ РїРµСЂРµРєРѕРґРёСЂРѕРІРєР°
 			MultiByteToWideChar(CP_UTF8, 0, (LPCCH)buff, dwBytes, uStr, uLength);
 			if (!WriteFile(writeFile, uStr, uLength * sizeof(wchar_t), (LPDWORD)&dwBytes, NULL)) {
-				printf("Ошибка записи!");
+				printf("РћС€РёР±РєР° Р·Р°РїРёСЃРё!");
 				break;
 			}
 		}

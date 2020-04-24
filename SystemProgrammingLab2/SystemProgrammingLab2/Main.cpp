@@ -9,9 +9,9 @@ void get_information();
 
 int main(int argc, char *argv[])
 {
-	//D:\Xai\СП\SP-COURSE\SystemProgrammingLab2\Debug\SystemProgrammingLab2.exe
-	//D:\Xai\СП\SP-COURSE\SystemProgrammingLab2\Debug\SystemProgrammingLab2.exe -s 
-	//D:\Xai\СП\SP-COURSE\SystemProgrammingLab2\Debug\SystemProgrammingLab2.exe -e
+	//D:\Xai\РЎРџ\SP-COURSE\SystemProgrammingLab2\Debug\SystemProgrammingLab2.exe
+	//D:\Xai\РЎРџ\SP-COURSE\SystemProgrammingLab2\Debug\SystemProgrammingLab2.exe -s 
+	//D:\Xai\РЎРџ\SP-COURSE\SystemProgrammingLab2\Debug\SystemProgrammingLab2.exe -e
 	setlocale(LC_ALL, "Russian");
 	if (argv[1] != NULL) {
 		if (strcmp(argv[1],"-s") == 0)
@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
 	}
 	else
 	{
-		printf("Введите параметры, и попробуйте еще раз!\n");
+		printf("Р’РІРµРґРёС‚Рµ РїР°СЂР°РјРµС‚СЂС‹, Рё РїРѕРїСЂРѕР±СѓР№С‚Рµ РµС‰Рµ СЂР°Р·!\n");
 	}
 	system("pause");
 	return 0;
@@ -47,7 +47,7 @@ void generate_error() {
 			MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT),
 			(LPTSTR)&error_message,
 			0, NULL);
-		printf("Системное описания произошедшей ошибки:\n%s", error_message);
+		printf("РЎРёСЃС‚РµРјРЅРѕРµ РѕРїРёСЃР°РЅРёСЏ РїСЂРѕРёР·РѕС€РµРґС€РµР№ РѕС€РёР±РєРё:\n%s", error_message);
 	}
 	return;
 }
