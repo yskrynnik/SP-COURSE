@@ -31,16 +31,56 @@
         <TextBlock Margin="5" Grid.Row="2" Grid.Column="1" Text="x2:" VerticalAlignment="Center" TextAlignment="Right"/>
         <TextBox Margin="5" Grid.Row="2" Grid.Column="2" x:Name="B" Width="150"/>
         <StackPanel x:Name="stackPanel" Margin="5" Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="3">
-            <RadioButton Content="x1 + x2" IsChecked="True" Checked="RadioButton_Checked" Tag="1"/>
-            <RadioButton Content="x1 - x2" Checked="RadioButton_Checked" Tag="2"/>
-            <RadioButton Content="x1 * x2" Checked="RadioButton_Checked" Tag="3"/>
-            <RadioButton Content="x1 / x2" Checked="RadioButton_Checked" Tag="4"/>
-            <RadioButton Content="sin(x1)" Checked="RadioButton_Checked" Tag="5"/>
-            <RadioButton Content="cos(x1)" Checked="RadioButton_Checked" Tag="6"/>
-            <RadioButton Content="tn(x1)" Checked="RadioButton_Checked" Tag="7"/>
-            <RadioButton Content="sqrt(x1)" Checked="RadioButton_Checked" Tag="8"/>
-            <RadioButton Content="log(x1)" Checked="RadioButton_Checked" Tag="9"/>
-            <RadioButton Content= "x1 ^ x2" Checked="RadioButton_Checked" Tag="10"/>
+            <RadioButton Content="x1 + x2" IsChecked="True" Checked="RadioButton_Checked">
+                <RadioButton.Tag>
+                    <local:Operations>Add</local:Operations>
+                </RadioButton.Tag>
+            </RadioButton>
+            <RadioButton Content="x1 - x2" Checked="RadioButton_Checked">
+                <RadioButton.Tag>
+                    <local:Operations>Sub</local:Operations>
+                </RadioButton.Tag>
+            </RadioButton>
+                <RadioButton Content="x1 * x2" Checked="RadioButton_Checked">
+                    <RadioButton.Tag>
+                        <local:Operations>Mul</local:Operations>
+                    </RadioButton.Tag>
+            </RadioButton>
+            <RadioButton Content="x1 / x2" Checked="RadioButton_Checked">
+                <RadioButton.Tag>
+                    <local:Operations>Div</local:Operations>
+                </RadioButton.Tag>
+            </RadioButton>
+            <RadioButton Content="sin(x1)" Checked="RadioButton_Checked" >
+                <RadioButton.Tag>
+                    <local:Operations>Sin</local:Operations>
+                </RadioButton.Tag>
+            </RadioButton>
+            <RadioButton Content="cos(x1)" Checked="RadioButton_Checked" >
+                <RadioButton.Tag>
+                    <local:Operations>Cos</local:Operations>
+                </RadioButton.Tag>
+            </RadioButton>
+            <RadioButton Content="tn(x1)" Checked="RadioButton_Checked" >
+                <RadioButton.Tag>
+                    <local:Operations>Tan</local:Operations>
+                </RadioButton.Tag>
+            </RadioButton>
+            <RadioButton Content="sqrt(x1)" Checked="RadioButton_Checked" >
+                <RadioButton.Tag>
+                    <local:Operations>Sqrt</local:Operations>
+                </RadioButton.Tag>
+            </RadioButton>
+            <RadioButton Content="log(x1)" Checked="RadioButton_Checked" >
+                <RadioButton.Tag>
+                    <local:Operations>Log</local:Operations>
+                </RadioButton.Tag>
+            </RadioButton>
+            <RadioButton Content= "x1 ^ x2" Checked="RadioButton_Checked" >
+                <RadioButton.Tag>
+                    <local:Operations>Pow</local:Operations>
+                </RadioButton.Tag>
+            </RadioButton>
         </StackPanel>
 
         <Button Margin="5" HorizontalAlignment="Stretch" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="4" Content="Посчитать" Click="CalculateButton_Click"/>
