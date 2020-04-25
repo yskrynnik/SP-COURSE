@@ -31,16 +31,16 @@
         <TextBlock Margin="5" Grid.Row="2" Grid.Column="1" Text="x2:" VerticalAlignment="Center" TextAlignment="Right"/>
         <TextBox Margin="5" Grid.Row="2" Grid.Column="2" x:Name="B" Width="150"/>
         <StackPanel x:Name="stackPanel" Margin="5" Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="3">
-            <RadioButton Content="x1 + x2" IsChecked="True" Checked="RadioButton_Checked"/>
-            <RadioButton Content="x1 - x2" Checked="RadioButton_Checked"/>
-            <RadioButton Content="x1 * x2" Checked="RadioButton_Checked"/>
-            <RadioButton Content="x1 / x2" Checked="RadioButton_Checked"/>
-            <RadioButton Content="sin(x1)" Checked="RadioButton_Checked"/>
-            <RadioButton Content="cos(x1)" Checked="RadioButton_Checked"/>
-            <RadioButton Content="tn(x1)" Checked="RadioButton_Checked"/>
-            <RadioButton Content="sqrt(x1)" Checked="RadioButton_Checked"/>
-            <RadioButton Content="log(x1)" Checked="RadioButton_Checked"/>
-            <RadioButton Content= "x1 ^ x2" Checked="RadioButton_Checked"/>
+            <RadioButton Content="x1 + x2" IsChecked="True" Checked="RadioButton_Checked" Tag="1"/>
+            <RadioButton Content="x1 - x2" Checked="RadioButton_Checked" Tag="2"/>
+            <RadioButton Content="x1 * x2" Checked="RadioButton_Checked" Tag="3"/>
+            <RadioButton Content="x1 / x2" Checked="RadioButton_Checked" Tag="4"/>
+            <RadioButton Content="sin(x1)" Checked="RadioButton_Checked" Tag="5"/>
+            <RadioButton Content="cos(x1)" Checked="RadioButton_Checked" Tag="6"/>
+            <RadioButton Content="tn(x1)" Checked="RadioButton_Checked" Tag="7"/>
+            <RadioButton Content="sqrt(x1)" Checked="RadioButton_Checked" Tag="8"/>
+            <RadioButton Content="log(x1)" Checked="RadioButton_Checked" Tag="9"/>
+            <RadioButton Content= "x1 ^ x2" Checked="RadioButton_Checked" Tag="10"/>
         </StackPanel>
 
         <Button Margin="5" HorizontalAlignment="Stretch" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="4" Content="Посчитать" Click="CalculateButton_Click"/>

@@ -5,6 +5,11 @@
 #include <locale.h>
 
 #define ARRAY_MAX_SIZE 60000000
+#define THREAD_ACTION_FIND_MIN 0
+#define THREAD_ACTION_FIND_MAX 1
+#define THREAD_ACTION_FIND_AVG 2
+#define THREAD_ACTION_TYPE 0
+#define THREAD_CRITICAL_SECTION_FLAG 1
 
 CRITICAL_SECTION section;
 int* array;
@@ -56,8 +61,8 @@ HANDLE* launch_threads(LPVOID use_critical_section)
 	for (int i = 0; i < 3; i++)
 	{
 		int* params = new int[2];
-		params[0] = i; //Тип операции
-		params[1] = (int)use_critical_section;
+		params[THREAD_ACTION_TYPE] = i; //Тип операции
+		params[THREAD_CRITICAL_SECTION_FLAG] = (int)use_critical_section;
 		threads[i] = CreateThread(
 			NULL, // дескриптор защиты
 			0,  // начальный размер стека
@@ -71,7 +76,7 @@ HANDLE* launch_threads(LPVOID use_critical_section)
 DWORD WINAPI thread_function(LPVOID param)
 {
 	int* params = (int*)param;
-	if ((bool)params[1])
+	if ((bool)params[THREAD_CRITICAL_SECTION_FLAG])
 	{
 		while (!TryEnterCriticalSection(&section))
 		{
@@ -81,9 +86,9 @@ DWORD WINAPI thread_function(LPVOID param)
 	int min = array[0];
 	int max = array[0];
 	float avg = 0;
-	switch (params[0])
+	switch (params[THREAD_ACTION_TYPE])
 	{
-		case 0:
+		case THREAD_ACTION_FIND_MIN:
 		for (int i = 0; i < ARRAY_MAX_SIZE; i++)
 		{
 			if (min > array[i])
@@ -91,7 +96,7 @@ DWORD WINAPI thread_function(LPVOID param)
 		}
 		printf("Минимум: %i\n", min);
 		break;
-		case 1:
+		case THREAD_ACTION_FIND_MAX:
 			
 			for (int i = 0; i < ARRAY_MAX_SIZE; i++)
 			{
@@ -100,7 +105,7 @@ DWORD WINAPI thread_function(LPVOID param)
 			}
 			printf("Максимум: %i\n", max);
 		break;
-		case 2:
+		case THREAD_ACTION_FIND_AVG:
 			
 			for (int i = 0; i < ARRAY_MAX_SIZE; i++)
 			{
@@ -109,7 +114,7 @@ DWORD WINAPI thread_function(LPVOID param)
 			printf("Среднее: %f\n", avg / ARRAY_MAX_SIZE);
 		break;
 	}
-	if ((bool)params[1])
+	if ((bool)params[THREAD_CRITICAL_SECTION_FLAG])
 	{
 		LeaveCriticalSection(&section);
 	}

@@ -10,6 +10,8 @@ namespace SystemProgrammingLab6
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        private const string AboutDeveloperChoice = "AboutDeveloper";
+        private const string CalculatorChoice = "Calculator";
         public MainPage()
         {
             this.InitializeComponent();
@@ -18,10 +20,10 @@ namespace SystemProgrammingLab6
         {
             switch (((NavigationViewItem)args.SelectedItem).Tag.ToString())
             {
-                case "AboutDeveloper":
+                case AboutDeveloperChoice:
                     Frame.Navigate(typeof(AboutDeveloper));
                     break;
-                case "Calculator":
+                case CalculatorChoice:
                     Frame.Navigate(typeof(Calculator));
                     break;
                 default: break;

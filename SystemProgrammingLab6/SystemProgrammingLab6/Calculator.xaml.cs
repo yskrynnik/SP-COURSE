@@ -12,7 +12,7 @@ namespace SystemProgrammingLab6
     /// </summary>
     public sealed partial class Calculator : Page
     {
-        private string _selectedRadioButton;
+        private int _selectedRadioButton;
         public Calculator()
         {
             this.InitializeComponent();
@@ -37,22 +37,22 @@ namespace SystemProgrammingLab6
 
             switch (_selectedRadioButton)
             {
-                case "x1 + x2": Result.Text = (x1 + x2).ToString(); break;
-                case "x1 - x2": Result.Text = (x1 - x2).ToString(); break;
-                case "x1 * x2": Result.Text = (x1 * x2).ToString(); break;
-                case "x1 / x2": Result.Text = (x2 == 0 ? "Нельзя делить на ноль" : (x1 / x2).ToString()); break;
-                case "sin(x1)": Result.Text = (Math.Sin(x1)).ToString(); break;
-                case "cos(x1)": Result.Text = (Math.Cos(x1)).ToString(); break;
-                case "tn(x1)" : Result.Text = (Math.Tan(x1)).ToString(); break;
-                case "sqrt(x1)": Result.Text = (x1 < 0 ? "Значение не может быть меньше нуля!" : (Math.Sqrt(x1)).ToString()); break;
-                case "log(x1)": Result.Text = (Math.Log(x1)).ToString(); break;
-                case "x1 ^ x2": Result.Text = (Math.Pow(x1, x2)).ToString(); break;
+                case 1: Result.Text = (x1 + x2).ToString(); break;
+                case 2: Result.Text = (x1 - x2).ToString(); break;
+                case 3: Result.Text = (x1 * x2).ToString(); break;
+                case 4: Result.Text = (x2 == 0 ? "Нельзя делить на ноль" : (x1 / x2).ToString()); break;
+                case 5: Result.Text = (Math.Sin(x1)).ToString(); break;
+                case 6: Result.Text = (Math.Cos(x1)).ToString(); break;
+                case 7 : Result.Text = (Math.Tan(x1)).ToString(); break;
+                case 8: Result.Text = (x1 < 0 ? "Значение не может быть меньше нуля!" : (Math.Sqrt(x1)).ToString()); break;
+                case 9: Result.Text = (Math.Log(x1)).ToString(); break;
+                case 10: Result.Text = (Math.Pow(x1, x2)).ToString(); break;
             }
         }
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
         {
             RadioButton pressed = (RadioButton)sender;
-            _selectedRadioButton = pressed.Content.ToString();
+            _selectedRadioButton = Convert.ToInt32(pressed.Tag);
         }
     }
 }

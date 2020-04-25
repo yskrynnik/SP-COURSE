@@ -3,6 +3,9 @@
 #include <stdio.h>
 #include <locale.h>
 using namespace std;
+#define PACK_COMMAND 1
+#define UNPACK_COMMAND 2
+#define EXIT_COMMAND 3
 // Функция разархивации архива
 bool unpack_files(LPSTR packed_file, LPSTR result_file);
 // Функция архивации архива
@@ -29,7 +32,7 @@ int main()
 		
 		switch (choice)
 		{
-		case 1:
+		case PACK_COMMAND:
 		{
 			LPSTR unpacked = new CHAR[MAX_PATH];
 			LPSTR result_file = new CHAR[MAX_PATH];
@@ -44,7 +47,7 @@ int main()
 			}
 			break;
 		}
-		case 2:
+		case UNPACK_COMMAND:
 		{
 			LPSTR packed_file = new CHAR[MAX_PATH];
 			LPSTR result_file = new CHAR[MAX_PATH];
@@ -59,7 +62,7 @@ int main()
 			}
 			break;
 		}
-		case 3: return 0; break;
+		case EXIT_COMMAND: return 0; break;
 		default:printf("Выбран неверный пункт меню попробуйте еще раз!\n");
 		}
 		system("pause");

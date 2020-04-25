@@ -113,7 +113,7 @@ namespace SystemProgrammingLab7
 
         private async void CreateFolderButton_Click(object sender, RoutedEventArgs e)
         {
-            if (folderName.Text != "" && currentFolder.Name != "")
+            if (!string.IsNullOrEmpty(folderName.Text) && !string.IsNullOrEmpty(currentFolder.Name))
             {
                 await currentFolder.CreateFolderAsync(folderName.Text);
                 ScanDirectory(currentFolder);
